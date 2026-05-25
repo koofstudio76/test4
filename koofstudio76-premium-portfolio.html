@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Koofstudio76 — Premium Portfolio</title>
+  <meta name="description" content="Премиум-портфолио сайтов Koofstudio76: витрина проектов GitHub Pages." />
+  <style>
+    :root {
+      --bg: #fbfaf6;
+      --paper: #ffffff;
+      --ink: #17130c;
+      --muted: #6f6759;
+      --gold: #b88a2f;
+      --gold-dark: #7d5a19;
+      --gold-soft: #ead8ad;
+      --line: rgba(184, 138, 47, 0.34);
+      --shadow: 0 28px 80px rgba(39, 30, 13, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(245, 222, 170, 0.55), transparent 34%),
+        linear-gradient(180deg, #fffdf8 0%, var(--bg) 42%, #f5efe2 100%);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .gold-line {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), #f0d88b, var(--gold), transparent);
+      z-index: 10;
+    }
+
+    header {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 7vw 6vw 5vw;
+      position: relative;
+      isolation: isolate;
+      border-bottom: 1px solid var(--line);
+    }
+
+    header::before {
+      content: "KOOFSTUDIO76";
+      position: absolute;
+      right: -4vw;
+      bottom: 5vh;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(76px, 15vw, 260px);
+      letter-spacing: -0.08em;
+      color: rgba(184, 138, 47, 0.08);
+      line-height: 0.8;
+      z-index: -1;
+      white-space: nowrap;
+    }
+
+    .topbar {
+      position: absolute;
+      top: 34px;
+      left: 6vw;
+      right: 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .brand-mark {
+      color: var(--gold-dark);
+      font-weight: 800;
+      letter-spacing: 0.22em;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: clamp(32px, 6vw, 110px);
+      align-items: end;
+      width: 100%;
+    }
+
+    .eyebrow {
+      margin: 0 0 24px;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: clamp(58px, 12vw, 188px);
+      line-height: 0.82;
+      letter-spacing: -0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      max-width: 720px;
+      margin: 34px 0 0;
+      font-size: clamp(18px, 2.1vw, 32px);
+      line-height: 1.25;
+      color: #30291f;
+    }
+
+    .hero-panel {
+      border: 1px solid var(--gold);
+      background: rgba(255,255,255,0.78);
+      box-shadow: var(--shadow);
+      padding: clamp(26px, 4vw, 54px);
+      position: relative;
+    }
+
+    .hero-panel::before,
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      border-color: var(--gold);
+      border-style: solid;
+    }
+
+    .hero-panel::before {
+      top: 12px;
+      left: 12px;
+      border-width: 1px 0 0 1px;
+    }
+
+    .hero-panel::after {
+      right: 12px;
+      bottom: 12px;
+      border-width: 0 1px 1px 0;
+    }
+
+    .stat {
+      display: grid;
+      gap: 6px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stat:last-child { border-bottom: 0; }
+
+    .stat strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 5vw, 76px);
+      line-height: 0.9;
+      color: var(--gold-dark);
+      font-weight: 500;
+    }
+
+    .stat span {
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      font-weight: 700;
+    }
+
+    main {
+      padding: 90px 6vw 120px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 54px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(48px, 8vw, 126px);
+      line-height: 0.88;
+      letter-spacing: -0.06em;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .section-head p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      background: rgba(255,255,255,0.35);
+    }
+
+    .card {
+      min-height: 360px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,250,238,0.56));
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: transform .35s ease, background .35s ease, box-shadow .35s ease;
+    }
+
+    .card::before {
+      content: attr(data-number);
+      position: absolute;
+      right: 18px;
+      top: 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 86px;
+      line-height: 1;
+      color: rgba(184, 138, 47, 0.11);
+      letter-spacing: -0.08em;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      background: #fff;
+      box-shadow: 0 32px 70px rgba(126, 89, 22, 0.17);
+      z-index: 2;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .label {
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .arrow {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--gold);
+      display: grid;
+      place-items: center;
+      color: var(--gold-dark);
+      font-size: 22px;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .card-title {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-title h3 {
+      margin: 0 0 20px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 4.2vw, 60px);
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .card-title p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 420px;
+    }
+
+    .featured {
+      grid-column: span 2;
+      min-height: 440px;
+      background:
+        linear-gradient(135deg, rgba(184,138,47,0.18), transparent 42%),
+        #fff;
+    }
+
+    .featured .card-title h3 {
+      font-size: clamp(56px, 8vw, 118px);
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 60px 6vw 80px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: end;
+      background: #fff;
+    }
+
+    .footer-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 8vw, 134px);
+      line-height: 0.85;
+      letter-spacing: -0.08em;
+      text-transform: uppercase;
+      color: rgba(23, 19, 12, 0.92);
+    }
+
+    .footer a {
+      color: var(--gold-dark);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 7px;
+    }
+
+    @media (max-width: 1100px) {
+      .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .featured { grid-column: span 2; }
+      .hero-grid, .section-head { grid-template-columns: 1fr; }
+      header { align-items: end; }
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        top: 24px;
+        left: 22px;
+        right: 22px;
+        font-size: 10px;
+      }
+
+      header {
+        min-height: 92vh;
+        padding: 96px 22px 34px;
+      }
+
+      h1 { font-size: clamp(54px, 19vw, 92px); }
+      .hero-subtitle { font-size: 18px; margin-top: 24px; }
+      .hero-panel { padding: 22px; }
+      main { padding: 58px 22px 70px; }
+      .section-head { gap: 24px; margin-bottom: 34px; }
+      h2 { font-size: clamp(46px, 14vw, 76px); }
+      .projects { grid-template-columns: 1fr; }
+      .featured { grid-column: span 1; }
+      .card, .featured { min-height: 310px; padding: 24px; }
+      .featured .card-title h3, .card-title h3 { font-size: clamp(38px, 12vw, 62px); }
+      .footer { grid-template-columns: 1fr; padding: 42px 22px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="gold-line"></div>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <div class="brand-mark">koofstudio76</div>
+        <div>premium web portfolio</div>
+      </div>
+
+      <div class="hero-grid">
+        <section>
+          <p class="eyebrow">GitHub Pages / websites / templates</p>
+          <h1>Koofstudio76<br>Portfolio</h1>
+          <p class="hero-subtitle">Белая премиальная витрина сайтов с золотой графикой, крупной типографикой и прямыми ссылками на опубликованные страницы.</p>
+        </section>
+
+        <aside class="hero-panel" aria-label="Статистика портфолио">
+          <div class="stat"><strong>30</strong><span>проектов в подборке</span></div>
+          <div class="stat"><strong>HTML</strong><span>сайты и лендинги</span></div>
+          <div class="stat"><strong>LIVE</strong><span>ссылки на сайты</span></div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <div class="section-head">
+        <h2>Works</h2>
+        <p>Карточки ведут не в репозитории, а на живые страницы формата <strong>koofstudio76.github.io/project</strong>. Фильтров нет. Углы карточек прямые.</p>
+      </div>
+
+      <section class="projects" id="projects">
+        <a class="card featured" data-number="01" href="https://koofstudio76.github.io/" target="_blank" rel="noopener">
+          <div class="card-top"><span class="label">main page</span><span class="arrow">↗</span></div>
+          <div class="card-title"><h3>koofstudio76.github.io</h3><p>Главная опубликованная страница GitHub Pages.</p></div>
+        </a>
+        <a class="card" data-number="02" href="https://koofstudio76.github.io/kseniya1/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>kseniya1</h3><p>Премиум-сайт / артистический шаблон.</p></div></a>
+        <a class="card" data-number="03" href="https://koofstudio76.github.io/voguestyle/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>voguestyle</h3><p>Fashion / editorial оформление.</p></div></a>
+        <a class="card" data-number="04" href="https://koofstudio76.github.io/vocal-blue/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>vocal-blue</h3><p>Вокальный сайт в синей эстетике.</p></div></a>
+        <a class="card" data-number="05" href="https://koofstudio76.github.io/vocal-templiate-blue/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>vocal-templiate-blue</h3><p>Шаблон сайта для вокалиста.</p></div></a>
+        <a class="card" data-number="06" href="https://koofstudio76.github.io/vocal-templiate-gold-/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>vocal-templiate-gold-</h3><p>Золотая версия вокального шаблона.</p></div></a>
+        <a class="card" data-number="07" href="https://koofstudio76.github.io/firegirls-black/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>firegirls-black</h3><p>Тёмная версия сайта музыкального проекта.</p></div></a>
+        <a class="card" data-number="08" href="https://koofstudio76.github.io/f/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>f</h3><p>Короткий проект / тестовая публикация.</p></div></a>
+        <a class="card" data-number="09" href="https://koofstudio76.github.io/ksusha/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>ksusha</h3><p>Артистический сайт / персональная страница.</p></div></a>
+        <a class="card" data-number="10" href="https://koofstudio76.github.io/maximaniskin-13/" target="_blank" rel="noopener"><div class="card-top"><span class="label">JavaScript</span><span class="arrow">↗</span></div><div class="card-title"><h3>maximaniskin-13</h3><p>Проект сайта Максима Анискина.</p></div></a>
+        <a class="card" data-number="11" href="https://koofstudio76.github.io/maximaniskin3/" target="_blank" rel="noopener"><div class="card-top"><span class="label">site</span><span class="arrow">↗</span></div><div class="card-title"><h3>maximaniskin3</h3><p>Вариант персонального сайта артиста.</p></div></a>
+        <a class="card" data-number="12" href="https://koofstudio76.github.io/maximaniskin2/" target="_blank" rel="noopener"><div class="card-top"><span class="label">JavaScript</span><span class="arrow">↗</span></div><div class="card-title"><h3>maximaniskin2</h3><p>Вторая версия сайта артиста.</p></div></a>
+        <a class="card" data-number="13" href="https://koofstudio76.github.io/maximaniskin-1/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>maximaniskin-1</h3><p>Ранняя версия портфолио.</p></div></a>
+        <a class="card" data-number="14" href="https://koofstudio76.github.io/maximaniskin/" target="_blank" rel="noopener"><div class="card-top"><span class="label">CSS</span><span class="arrow">↗</span></div><div class="card-title"><h3>maximaniskin</h3><p>Основной проект в серии.</p></div></a>
+        <a class="card" data-number="15" href="https://koofstudio76.github.io/repetitor/" target="_blank" rel="noopener"><div class="card-top"><span class="label">JavaScript</span><span class="arrow">↗</span></div><div class="card-title"><h3>repetitor</h3><p>Образовательный / интерактивный проект.</p></div></a>
+        <a class="card" data-number="16" href="https://koofstudio76.github.io/catalog2/" target="_blank" rel="noopener"><div class="card-top"><span class="label">JavaScript</span><span class="arrow">↗</span></div><div class="card-title"><h3>catalog2</h3><p>Каталог, вторая версия.</p></div></a>
+        <a class="card" data-number="17" href="https://koofstudio76.github.io/catalog/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>catalog</h3><p>Каталожная структура сайта.</p></div></a>
+        <a class="card" data-number="18" href="https://koofstudio76.github.io/cat/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>cat</h3><p>Короткая версия каталога.</p></div></a>
+        <a class="card" data-number="19" href="https://koofstudio76.github.io/agency-1/" target="_blank" rel="noopener"><div class="card-top"><span class="label">CSS</span><span class="arrow">↗</span></div><div class="card-title"><h3>agency-1</h3><p>Агентский сайт / промо-страница.</p></div></a>
+        <a class="card" data-number="20" href="https://koofstudio76.github.io/-1/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>-1</h3><p>Проект с коротким техническим именем.</p></div></a>
+        <a class="card" data-number="21" href="https://koofstudio76.github.io/kosak-choir/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>kosak-choir</h3><p>Сайт хора / музыкального коллектива.</p></div></a>
+        <a class="card" data-number="22" href="https://koofstudio76.github.io/vocal/" target="_blank" rel="noopener"><div class="card-top"><span class="label">site</span><span class="arrow">↗</span></div><div class="card-title"><h3>vocal</h3><p>Вокальный шаблон.</p></div></a>
+        <a class="card" data-number="23" href="https://koofstudio76.github.io/test2/" target="_blank" rel="noopener"><div class="card-top"><span class="label">test</span><span class="arrow">↗</span></div><div class="card-title"><h3>test2</h3><p>Тестовая публикация.</p></div></a>
+        <a class="card" data-number="24" href="https://koofstudio76.github.io/test/" target="_blank" rel="noopener"><div class="card-top"><span class="label">CSS</span><span class="arrow">↗</span></div><div class="card-title"><h3>test</h3><p>Тестовый проект.</p></div></a>
+        <a class="card" data-number="25" href="https://koofstudio76.github.io/test2-io/" target="_blank" rel="noopener"><div class="card-top"><span class="label">JavaScript</span><span class="arrow">↗</span></div><div class="card-title"><h3>test2-io</h3><p>Тестовая GitHub Pages версия.</p></div></a>
+        <a class="card" data-number="26" href="https://koofstudio76.github.io/test-io/" target="_blank" rel="noopener"><div class="card-top"><span class="label">site</span><span class="arrow">↗</span></div><div class="card-title"><h3>test-io</h3><p>Тестовый сайт.</p></div></a>
+        <a class="card" data-number="27" href="https://koofstudio76.github.io/video/" target="_blank" rel="noopener"><div class="card-top"><span class="label">media</span><span class="arrow">↗</span></div><div class="card-title"><h3>video</h3><p>Видео-страница / медиа-проект.</p></div></a>
+        <a class="card" data-number="28" href="https://koofstudio76.github.io/koofstudio7ksu/" target="_blank" rel="noopener"><div class="card-top"><span class="label">JavaScript</span><span class="arrow">↗</span></div><div class="card-title"><h3>koofstudio7ksu</h3><p>Дополнительная страница проекта.</p></div></a>
+        <a class="card" data-number="29" href="https://koofstudio76.github.io/UHANOzzzzz/" target="_blank" rel="noopener"><div class="card-top"><span class="label">HTML</span><span class="arrow">↗</span></div><div class="card-title"><h3>UHANOzzzzz</h3><p>Сайт из серии Uhanov.</p></div></a>
+        <a class="card" data-number="30" href="https://koofstudio76.github.io/uhanov/" target="_blank" rel="noopener"><div class="card-top"><span class="label">JavaScript</span><span class="arrow">↗</span></div><div class="card-title"><h3>uhanov</h3><p>Персональный / концертный сайт.</p></div></a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-title">Koofstudio76<br>Web Works</div>
+      <a href="https://github.com/koofstudio76" target="_blank" rel="noopener">GitHub profile</a>
+    </footer>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const reveal = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.animate([
+            { opacity: 0, transform: 'translateY(26px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { duration: 650, easing: 'cubic-bezier(.22,.8,.22,1)', fill: 'forwards' });
+          reveal.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    cards.forEach((card) => {
+      card.style.opacity = '0';
+      reveal.observe(card);
+    });
+  </script>
+</body>
+</html>
